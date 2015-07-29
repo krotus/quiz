@@ -8,7 +8,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Quiz' });
 });
 
-router.get('/quizes/question', quizController.question);
-router.get('/quizes/answer', quizController.answer);
+router.get('/quizes', quizController.index); //list of quizes
+router.get('/quizes/:quizId(\\d+)', quizController.show); //uniq quize from id
+router.get('/quizes/:quizId(\\d+)/answer', quizController.answer); //uniq answer from quiz
 
 module.exports = router;

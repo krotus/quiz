@@ -2,7 +2,7 @@
   <%= respuesta %>
 </p>
 <% if (respuesta === 'Incorrecto'){ %>
-<a href="/quizes/question">Intentalo otra vez</a>
+<a href="/quizes/<%= quiz.id %>">Intentalo otra vez</a>
 <% }else{ %>
 <a href="/">Volver a las preguntas</a>
 <% } %>
