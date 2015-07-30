@@ -33,7 +33,17 @@ var sequelize = new Sequelize(DB_name, user, pwd,
 //Importar la definición de la tabla Quiz en quiz.js
 var quiz_path = path.join(__dirname, 'quiz');
 var Quiz = sequelize.import(quiz_path);
+
+//importar la definición de la tabla Comment en comments.js
+var comment_path = path.join(__dirname, 'comment');
+var Comment = sequelize.import(comment_path);
+
+//Relacion 1 - N
+Comment.belongsTo(Quiz); //parte 1 de la relación
+Quiz.hasMany(Comment);// parte N de la relación
+
 exports.Quiz = Quiz; // exportar definición de la tabla Quiz
+exports.Comment = Comment; // exportar definición de la tabla Comment
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 sequelize.sync().then(function(){
@@ -43,6 +53,10 @@ sequelize.sync().then(function(){
       Quiz.create({
         pregunta: 'Capital de Italia',
         respuesta: 'Roma'
+      });
+      Comment.create({
+        texto: 'Hello',
+        QuizId: 1
       });
       Quiz.create({
         pregunta: 'Capital de Portugal',
