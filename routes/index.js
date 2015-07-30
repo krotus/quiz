@@ -17,5 +17,7 @@ router.get('/quizes/:quizId(\\d+)', quizController.show); //uniq quize from id
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer); //uniq answer from quiz
 router.get('/quizes/new', quizController.new);//router to view form
 router.post('/quizes/create', quizController.create);//router to create question by obj
+router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);//router to edit page of question
+router.put('/quizes/:quizId(\\d+)/update', quizController.update);//router to update question
 
 module.exports = router;
