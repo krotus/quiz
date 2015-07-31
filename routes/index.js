@@ -4,6 +4,7 @@ var router = express.Router();
 //Controllers
 var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
+var sessionController = require('../controllers/session_controller');
 
 // Página de entrada
 router.get('/', function(req, res, next) {
@@ -26,5 +27,10 @@ router.delete('/quizes/:quizId(\\d+)/delete', quizController.delete);//router to
 //Definición de rutas de /comments
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
 router.post('/quizes/:quizId(\\d+)/comments', commentController.create);
+
+//Definición de rutas de sesión /login
+router.get('/login', sessionController.new); //formulario login
+router.post('/login', sessionController.create); //crea la sesión
+router.get('/logout', sessionController.destroy); //destruye la sesión
 
 module.exports = router;
